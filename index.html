@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu Hung Stone Arts & Botanical Atelier | Da Nang</title>
+  
+  <!-- Fallback redirect if JavaScript is disabled -->
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=./en/">
+  </noscript>
+
+  <!-- Canonical & SEO Identity -->
+  <link rel="canonical" href="https://themarblemountains.com/en/">
+  <link rel="alternate" hreflang="en" href="./en/">
+  <link rel="alternate" hreflang="ru" href="./ru/">
+  <link rel="alternate" hreflang="vi" href="./viet/">
+  <link rel="alternate" hreflang="x-default" href="./en/">
+
+  <script>
+    (function () {
+      // 1. Проверяем, выбирал ли пользователь язык вручную ранее
+      var savedLang = null;
+      try {
+        savedLang = localStorage.getItem('th_lang');
+      } catch (e) {}
+
+      // 2. Если язык уже сохранен в браузере, используем его
+      if (savedLang === 'ru') {
+        window.location.replace('./ru/');
+        return;
+      } else if (savedLang === 'viet') {
+        window.location.replace('./viet/');
+        return;
+      } else if (savedLang === 'en') {
+        window.location.replace('./en/');
+        return;
+      }
+
+      // 3. Если первого визита не было, считываем язык браузера/системы
+      var navLang = (navigator.languages && navigator.languages.length ? navigator.languages[0] : (navigator.language || navigator.userLanguage || 'en')).toLowerCase();
+
+      // Определение русской локали (включая страны СНГ)
+      if (
+        navLang.indexOf('ru') === 0 || 
+        navLang.indexOf('be') === 0 || 
+        navLang.indexOf('uk') === 0 || 
+        navLang.indexOf('kk') === 0
+      ) {
+        window.location.replace('./ru/');
+        return;
+      }
+
+      // Определение вьетнамской локали
+      if (navLang.indexOf('vi') === 0) {
+        window.location.replace('./viet/');
+        return;
+      }
+
+      // 4. По умолчанию для всего мира — международная английская версия
+      window.location.replace('./en/');
+    })();
+  </script>
+
+  <style>
+    /* Прелоадер на доли секунды до срабатывания редиректа */
+    body {
+      background-color: #0E0C0A;
+      color: #FAF8F5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+    .spinner {
+      width: 28px;
