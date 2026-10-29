@@ -1,0 +1,18 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <g id="tu-hung-emblem">
+    <circle cx="40" cy="40" r="36" fill="none" stroke="#1A1A1A" stroke-width="3" opacity="0.9" />
+    <circle cx="40" cy="40" r="32" fill="none" stroke="#C5A880" stroke-width="0.8" opacity="0.6" stroke-dasharray="2 2" />
+    <path d="M22 48 C 28 42, 38 34, 58 38 C 48 42, 36 48, 22 48 Z" fill="#1A1A1A"/>
+    <path d="M27 38 L38 24 L44 26 L34 38 Z" fill="#1A1A1A"/>
+    <path d="M37 36 L50 20 L56 22 L44 36 Z" fill="#1A1A1A"/>
+    <path d="M47 34 L62 18 L68 20 L54 34 Z" fill="#1A1A1A"/>
+    <circle cx="58" cy="54" r="8" fill="#1A1A1A"/>
+    <text x="58" y="56.5" font-family="&apos;Cinzel&apos;, Georgia, serif" font-size="5" fill="#FAF8F5" text-anchor="middle">ART</text>
+    <text x="36" y="56" font-family="&apos;Cinzel&apos;, Georgia, serif" font-size="5.5" font-weight="600" fill="#1A1A1A" text-anchor="middle">TU HUNG</text>
+  </g>
+  <g transform="translate(90, 24)">
+    <text x="0" y="24" font-family="&apos;Cinzel&apos;, Georgia, serif" font-size="22" font-weight="700" fill="#1A1A1A" letter-spacing="3.5">TU HUNG</text>
+    <text x="145" y="24" font-family="&apos;Cinzel&apos;, Georgia, serif" font-size="14" font-weight="400" fill="#6B6763" letter-spacing="2">ATELIER</text>
+    <text x="2" y="42" font-family="&apos;Inter&apos;, sans-serif" font-size="8" font-weight="500" fill="#8C827A" letter-spacing="3.2">DA NANG • MASTER STONE &amp; BOTANICAL LIGHT</text>
+  </g>
+</svg>
