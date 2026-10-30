@@ -31,6 +31,11 @@
       </nav>
 
       <div class="header-actions">
+        <button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false">
+          <span class="menu-line"></span>
+          <span class="menu-line"></span>
+          <span class="menu-line"></span>
+        </button>
         <div class="lang-switch-modern">
           <a href="#" class="active" data-lang-switch="en">EN</a>
           <a href="#" data-lang-switch="ru">RU</a>
@@ -40,6 +45,27 @@
           Inquiry (<span class="inquiry-count">0</span>)
         </a>
       </div>
+
+      <!-- Мобильное меню (открывается по гамбургеру) -->
+      <nav class="nav-mobile">
+        <ul class="nav-mobile-list">
+          <li><a href="#stone-archive">Stone Archive</a></li>
+          <li><a href="#cinnamon-section">Cinnamon Light</a></li>
+          <li><a href="./bespoke.html">Architects</a></li>
+          <li><a href="#heritage">Lineage</a></li>
+        </ul>
+        <div class="nav-mobile-bottom">
+          <a href="./inquiry.html" class="cart-pill-minimal">
+            Inquiry (<span class="inquiry-count">0</span>)
+          </a>
+          <div class="lang-switch-modern">
+            <a href="#" class="active" data-lang-switch="en">EN</a>
+            <a href="#" data-lang-switch="ru">RU</a>
+            <a href="#" data-lang-switch="viet">VI</a>
+          </div>
+        </div>
+      </nav>
+      <div class="nav-mobile-overlay"></div>
     </div>
   </header>
 
@@ -53,16 +79,16 @@
     </div>
 
     <div class="container-wide hero-content-modern">
-      <span class="label-mono" style="color: rgba(255,255,255,0.7); display: block; margin-bottom: 16px;">
+      <span class="label-mono reveal fade-up" style="color: rgba(255,255,255,0.7); display: block; margin-bottom: 16px;">
         Non Nuoc Mountain Quarry Lineage • Da Nang
       </span>
-      <h1>MONOLITHIC FORM & LIVING BARK</h1>
+      <h1 class="reveal fade-up">MONOLITHIC FORM & LIVING BARK</h1>
       
-      <div class="hero-subrow">
+      <div class="hero-subrow reveal fade-up">
         <p>
           Raw earth sculpted by generational carvers. Monolithic marble chiseled from karst formations, paired with aromatic wild mountain cinnamon luminaires.
         </p>
-        <div style="display: flex; gap: 16px;">
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           <a href="#stone-archive" class="btn-editorial btn-editorial-light">Stone Archive</a>
           <a href="#cinnamon-section" class="btn-editorial btn-editorial-outline">Cinnamon Works</a>
         </div>
@@ -437,6 +463,57 @@
       // Скрываем постер, когда видео пошло — чтобы картинка не загораживала видео
       v.addEventListener('playing', function() {
         v.style.display = 'block';
+      });
+    })();
+
+    // ===== Мобильное меню (гамбургер) =====
+    (function() {
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav-mobile');
+      const overlay = document.querySelector('.nav-mobile-overlay');
+      const links = document.querySelectorAll('.nav-mobile-list a');
+      if (!toggle || !nav || !overlay) return;
+
+      function openMenu() {
+        toggle.classList.add('active');
+        toggle.setAttribute('aria-expanded', 'true');
+        nav.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      toggle.addEventListener('click', function() {
+        if (nav.classList.contains('active')) closeMenu(); else openMenu();
+      });
+      overlay.addEventListener('click', closeMenu);
+      links.forEach(function(link) { link.addEventListener('click', closeMenu); });
+
+      // Закрытие по клавише Esc
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && nav.classList.contains('active')) closeMenu();
+      });
+    })();
+
+    // ===== Реveal-анимация при скролле =====
+    (function() {
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        observer.observe(el);
       });
     })();
   </script>
